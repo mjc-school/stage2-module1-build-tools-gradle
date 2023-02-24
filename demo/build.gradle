@@ -1,4 +1,34 @@
-//add everything here
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility=JavaVersion.VERSION_11
+}
+
+group = 'org.gradle'
+version = '1.3.5'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.gradle'
+            artifactId = 'demo'
+            version = '1.3.5'
+            from components.java
+
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':utils')
+}
 
 test {
     useJUnitPlatform()
